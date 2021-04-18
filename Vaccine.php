@@ -219,7 +219,7 @@
             $to_email = $email;
             $subject = "Vaccines Due for your child :";
             $body = $m;
-            $headers = "From: spyman2748@gmail.com";
+            $headers = "From: sender_@_mail.com";
 
             if (mail($to_email, $subject, $body, $headers)) {
                 echo "<script> alert('Email successfully sent to $to_email ...') </script>";
