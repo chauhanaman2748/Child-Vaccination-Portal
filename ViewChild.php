@@ -5,9 +5,6 @@
 	$email=$_SESSION["email"];
 	$res= $_SESSION["padd"];
 	$n=$_SESSION["fn"];
-	$_SESSION["ChildId"];
-	$_SESSION["Childnm"];
-	$_SESSION["ChildAge"];
 	$tn= $_SESSION["tn"];
 
 	$age=[];
