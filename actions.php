@@ -15,6 +15,27 @@
 	    $_SESSION["fn"]= $_POST['fname'];
             $_SESSION["tn"]= $Father.$mob1;
             $tn= $_SESSION["tn"];
+		
+	    
+	    $servername = "localhost";
+            $username = "root";
+            $password = "";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password);
+            // Check connection
+            if ($conn->connect_error) {
+              die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Create database
+            $sql = "CREATE DATABASE vaccine";
+            if ($conn->query($sql) === TRUE) {
+              echo "Database created successfully";
+            } else {
+              echo "Error creating database: " . $conn->error;
+            }
+		
 
             if($Father != null && $mob1 != '' && $Mother != '' && $mob2 != '' && $add != ''){
 
@@ -28,6 +49,20 @@
                 // Check connection
                 if ($conn->connect_error) {
                   die("Connection failed: " . $conn->connect_error);
+                }
+		    
+		$sql2 = "CREATE TABLE `parentsreg` (
+                    Fname varchar(40) NOT NULL,
+                    Fmob VARCHAR(10) NOT NULL PRIMARY KEY,
+                    Mname varchar(40) NOT NULL,
+                    Mmob VARCHAR(30) NOT NULL UNIQUE,
+		            Padd VARCHAR(80) NOT NULL
+                )";
+
+                if ($conn->query($sql2) === TRUE) {
+                    echo "Table MyGuests created successfully";
+                } else {
+                    echo "Error creating table: " . $conn->error;
                 }
 
                 $sql = "INSERT INTO parentsreg(Fname, Fmob, Mname, Mmob, Padd) values('$Father', '$mob1', '$Mother', '$mob2', '$add')";
